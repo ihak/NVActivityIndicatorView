@@ -40,7 +40,7 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
 
         self.view.backgroundColor = UIColor(red: CGFloat(237 / 255.0), green: CGFloat(85 / 255.0), blue: CGFloat(101 / 255.0), alpha: 1)
 
-        let cols = 4
+        let cols = 5
         let rows = 8
         let cellWidth = Int(self.view.frame.width / CGFloat(cols))
         let cellHeight = Int(self.view.frame.height / CGFloat(rows))

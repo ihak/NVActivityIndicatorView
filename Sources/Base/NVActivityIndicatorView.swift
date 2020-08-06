@@ -272,6 +272,12 @@ public enum NVActivityIndicatorType: CaseIterable {
      */
     case circleStrokeSpin
 
+    /**
+     OppositeStrokes.
+     
+     - returns: Instance of NVActivityIndicatorAnimationOppositeStrokes.
+     */
+    case oppositeStrokes
     // swiftlint:disable:next cyclomatic_complexity function_body_length
     func animation() -> NVActivityIndicatorAnimationDelegate {
         switch self {
@@ -343,6 +349,8 @@ public enum NVActivityIndicatorType: CaseIterable {
             return NVActivityIndicatorAnimationAudioEqualizer()
         case .circleStrokeSpin:
             return NVActivityIndicatorAnimationCircleStrokeSpin()
+        case .oppositeStrokes:
+            return NVActivityIndicatorAnimationOppositeStrokes()
         }
     }
 }

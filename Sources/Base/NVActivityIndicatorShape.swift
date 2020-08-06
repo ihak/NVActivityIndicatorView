@@ -32,6 +32,8 @@ enum NVActivityIndicatorShape {
     case circle
     case circleSemi
     case ring
+    case ringHalf
+    case ringQuarter
     case ringTwoHalfVertical
     case ringTwoHalfHorizontal
     case ringThirdFour
@@ -42,7 +44,7 @@ enum NVActivityIndicatorShape {
     case stroke
 
     // swiftlint:disable:next cyclomatic_complexity function_body_length
-    func layerWith(size: CGSize, color: UIColor) -> CALayer {
+    func layerWith(size: CGSize, color: UIColor, lineWidth: CGFloat = 2) -> CALayer {
         let layer: CAShapeLayer = CAShapeLayer()
         var path: UIBezierPath = UIBezierPath()
         let lineWidth: CGFloat = 2
@@ -71,6 +73,26 @@ enum NVActivityIndicatorShape {
                         clockwise: false)
             layer.fillColor = nil
             layer.strokeColor = color.cgColor
+            layer.lineWidth = lineWidth
+        case .ringQuarter:
+            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+                        radius: size.width / 2,
+                        startAngle: CGFloat(Double.pi),
+                        endAngle: CGFloat(-Double.pi/2),
+                        clockwise: true)
+            layer.fillColor = nil
+            layer.strokeColor = color.cgColor
+            layer.lineCap = .round
+            layer.lineWidth = lineWidth
+        case .ringHalf:
+            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+                        radius: size.width / 2,
+                        startAngle: 0,
+                        endAngle: CGFloat(Double.pi),
+                        clockwise: false)
+            layer.fillColor = nil
+            layer.strokeColor = color.cgColor
+            layer.lineCap = .round
             layer.lineWidth = lineWidth
         case .ringTwoHalfVertical:
             path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
