@@ -29,60 +29,74 @@
 import UIKit
 
 class NVActivityIndicatorAnimationOppositeStrokes: NVActivityIndicatorAnimationDelegate {
-
+    
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let duration: CFTimeInterval = 1.75
-
-
-        // Rotate animation
-        let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-        rotateAnimation.calculationMode = .cubic
-        rotateAnimation.values = [Double.pi, Double.pi*2, Double.pi*3, Double.pi*3.12, Double.pi*3, Double.pi*3, Double.pi*3]//[0, Double.pi, (Double.pi*1.5), (Double.pi*2), (Double.pi*2.1), (Double.pi*2), (Double.pi*2), (Double.pi*2)]
-
-        let rotateAnimation2 = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-        rotateAnimation2.calculationMode = .cubic
-        rotateAnimation2.values = [Double.pi*3, Double.pi*2, Double.pi, Double.pi*0.88, Double.pi, Double.pi, Double.pi]
+        let animationValues = [
+            [Double.pi*3, Double.pi*2, Double.pi, Double.pi*0.88, Double.pi, Double.pi, Double.pi],
+            [Double.pi, Double.pi*2, Double.pi*3, Double.pi*3.12, Double.pi*3, Double.pi*3, Double.pi*3]
+        ]
         
-        // Animation
-        let animation = CAAnimationGroup()
+        for i in 0...1 {
+            // Rotate animation
+            let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+            rotateAnimation.calculationMode = .cubic
+            rotateAnimation.values = animationValues[i]
+            
+            // Animation
+            let animation = CAAnimationGroup()
+            animation.animations = [rotateAnimation]
+            animation.timingFunction = CAMediaTimingFunction(name: .linear)
+            animation.duration = duration
+            animation.repeatCount = HUGE
+            animation.isRemovedOnCompletion = false
+            
+            let circle = i == 0 ? NVActivityIndicatorShape.ringQuarter.layerWith(size: CGSize(width: size.width, height: size.height), color: .blue, lineWidth: 4) : NVActivityIndicatorShape.ringHalf.layerWith(size: CGSize(width: size.width, height: size.height), color: color, lineWidth: 4)
 
-        animation.animations = [ rotateAnimation]
-        animation.timingFunction = CAMediaTimingFunction(name: .linear)
-        animation.duration = duration
-        animation.repeatCount = HUGE
-        animation.isRemovedOnCompletion = false
+            let frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
+                               y: (layer.bounds.size.height - size.height) / 2,
+                               width: size.width,
+                               height: size.height)
 
-        let animation2 = CAAnimationGroup()
-
-        animation2.animations = [ rotateAnimation2]
-        animation2.timingFunction = CAMediaTimingFunction(name: .linear)
-        animation2.duration = duration
-        animation2.repeatCount = HUGE
-        animation2.isRemovedOnCompletion = false
-
-        // Draw circle1
-        let circle = NVActivityIndicatorShape.ringHalf.layerWith(size: CGSize(width: size.width, height: size.height), color: color, lineWidth: 4)
-        let frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
-                           y: (layer.bounds.size.height - size.height) / 2,
-                           width: size.width,
-                           height: size.height)
-
-        circle.frame = frame
-        circle.add(animation, forKey: "animation")
-//        layer.addSublayer(circle)
+            circle.frame = frame
+            circle.add(animation, forKey: "animation")
+            layer.addSublayer(circle)
+        }
+    }
+    
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, tintColor: UIColor) {
+        let duration: CFTimeInterval = 1.75
+        let animationValues = [
+            [Double.pi*3, Double.pi*2, Double.pi, Double.pi*0.88, Double.pi, Double.pi, Double.pi],
+            [Double.pi, Double.pi*2, Double.pi*3, Double.pi*3.12, Double.pi*3, Double.pi*3, Double.pi*3]
+        ]
         
-        // Draw circle2
-        let circle2 = NVActivityIndicatorShape.ringQuarter.layerWith(size: CGSize(width: size.width, height: size.height), color: .blue, lineWidth: 4)
-        let frame2 = CGRect(x: (layer.bounds.size.width - size.width) / 2,
-                           y: (layer.bounds.size.height - size.height) / 2,
-                           width: size.width,
-                           height: size.height)
+        for i in 0...1 {
+            // Rotate animation
+            let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+            rotateAnimation.calculationMode = .cubic
+            rotateAnimation.values = animationValues[i]
+            
+            // Animation
+            let animation = CAAnimationGroup()
+            animation.animations = [rotateAnimation]
+            animation.timingFunction = CAMediaTimingFunction(name: .linear)
+            animation.duration = duration
+            animation.repeatCount = HUGE
+            animation.isRemovedOnCompletion = false
+            
+            let circleColor = i == 0 ? tintColor : color
+            let circle = i == 0 ? NVActivityIndicatorShape.ringQuarter.layerWith(size: CGSize(width: size.width, height: size.height), color: circleColor, lineWidth: 4) : NVActivityIndicatorShape.ringHalf.layerWith(size: CGSize(width: size.width, height: size.height), color: circleColor, lineWidth: 4)
 
-        circle2.frame = frame2
-        circle2.add(animation2, forKey: "animation")
-        layer.addSublayer(circle2)
-        
-        layer.addSublayer(circle)
+            let frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
+                               y: (layer.bounds.size.height - size.height) / 2,
+                               width: size.width,
+                               height: size.height)
+
+            circle.frame = frame
+            circle.add(animation, forKey: "animation")
+            layer.addSublayer(circle)
+        }
     }
 }
 #endif
