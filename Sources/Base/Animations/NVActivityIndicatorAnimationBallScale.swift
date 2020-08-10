@@ -30,7 +30,7 @@ import UIKit
 
 class NVActivityIndicatorAnimationBallScale: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, secondaryColor: UIColor) {
         let duration: CFTimeInterval = 1
 
         // Scale animation

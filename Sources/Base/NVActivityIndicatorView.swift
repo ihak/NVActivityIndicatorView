@@ -372,6 +372,10 @@ public final class NVActivityIndicatorView: UIView {
 
     /// Default color of activity indicator. Default value is UIColor.white.
     public static var DEFAULT_COLOR = UIColor.white
+    
+    /// Default tint color of activity indicator. Default value is blue.
+    /// Applicable to indicators with opposing animations (e.g oppositeStorkes)
+    public static var DEFAULT_SECONDARY_COLOR = UIColor.blue
 
     /// Default color of text. Default value is UIColor.white.
     public static var DEFAULT_TEXT_COLOR = UIColor.white
@@ -443,6 +447,9 @@ public final class NVActivityIndicatorView: UIView {
 
     /// Color of activity indicator view.
     @IBInspectable public var color: UIColor = NVActivityIndicatorView.DEFAULT_COLOR
+    
+    /// Tint color of activity indicator view.
+    @IBInspectable public var secondaryColor: UIColor = NVActivityIndicatorView.DEFAULT_SECONDARY_COLOR
 
     /// Padding of activity indicator view.
     @IBInspectable public var padding: CGFloat = NVActivityIndicatorView.DEFAULT_PADDING
@@ -480,9 +487,10 @@ public final class NVActivityIndicatorView: UIView {
 
      - returns: The activity indicator view.
      */
-    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, padding: CGFloat? = nil) {
+    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, secondaryColor: UIColor? = nil, padding: CGFloat? = nil) {
         self.type = type ?? NVActivityIndicatorView.DEFAULT_TYPE
         self.color = color ?? NVActivityIndicatorView.DEFAULT_COLOR
+        self.secondaryColor = color ?? NVActivityIndicatorView.DEFAULT_SECONDARY_COLOR
         self.padding = padding ?? NVActivityIndicatorView.DEFAULT_PADDING
         super.init(frame: frame)
         isHidden = true
@@ -561,7 +569,7 @@ public final class NVActivityIndicatorView: UIView {
 
         layer.sublayers = nil
         animationRect.size = CGSize(width: minEdge, height: minEdge)
-        animation.setUpAnimation(in: layer, size: animationRect.size, color: color)
+        animation.setUpAnimation(in: layer, size: animationRect.size, color: color, secondaryColor: secondaryColor)
     }
 }
 #endif

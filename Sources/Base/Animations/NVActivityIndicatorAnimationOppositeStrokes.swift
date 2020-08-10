@@ -30,7 +30,7 @@ import UIKit
 
 class NVActivityIndicatorAnimationOppositeStrokes: NVActivityIndicatorAnimationDelegate {
     
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, secondaryColor: UIColor) {
         let duration: CFTimeInterval = 1.75
         let animationValues = [
             [Double.pi*3, Double.pi*2, Double.pi, Double.pi*0.88, Double.pi, Double.pi, Double.pi],

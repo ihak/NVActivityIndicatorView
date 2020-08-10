@@ -31,7 +31,7 @@ import QuartzCore
 
 class NVActivityIndicatorAnimationBallZigZag: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, secondaryColor: UIColor) {
         let circleSize: CGFloat = size.width / 5
         let duration: CFTimeInterval = 0.7
         let deltaX = size.width / 2 - circleSize / 2

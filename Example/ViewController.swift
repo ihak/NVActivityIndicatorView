@@ -81,13 +81,14 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
         let selectedIndicatorIndex = sender.tag
         let indicatorType = presentingIndicatorTypes[selectedIndicatorIndex]
 
-        startAnimating(size, message: "Loading...", type: indicatorType, fadeInAnimation: nil)
+//        startAnimating(size, message: "Loading...", messageFont: indicatorType, type: nil, color: .yellow)
+        startAnimating(size, message: "Loading...", messageFont: nil, type: indicatorType, color: nil, padding: nil, displayTimeThreshold: nil, minimumDisplayTime: nil, backgroundColor: self.view.backgroundColor, textColor: nil, fadeInAnimation: nil)
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             NVActivityIndicatorPresenter.sharedInstance.setMessage("Authenticating...")
         }
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
             self.stopAnimating(nil)
         }
     }

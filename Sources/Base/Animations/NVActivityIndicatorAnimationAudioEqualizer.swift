@@ -30,7 +30,7 @@ import UIKit
 
 class NVActivityIndicatorAnimationAudioEqualizer: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, secondaryColor: UIColor) {
         let lineSize = size.width / 9
         let x = (layer.bounds.size.width - lineSize * 7) / 2
         let y = (layer.bounds.size.height - size.height) / 2

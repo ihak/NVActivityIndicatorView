@@ -30,7 +30,7 @@ import UIKit
 
 class NVActivityIndicatorAnimationCubeTransition: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, secondaryColor: UIColor) {
         let squareSize = size.width / 5
         let x = (layer.bounds.size.width - size.width) / 2
         let y = (layer.bounds.size.height - size.height) / 2
