@@ -30,7 +30,7 @@ import UIKit
 
 class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, secondaryColor: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor, secondaryColor: UIColor, lineWidth: CGFloat) {
         let circleSize = size.width / 5
         let deltaX = size.width / 2 - circleSize / 2
         let deltaY = size.height / 2 - circleSize / 2

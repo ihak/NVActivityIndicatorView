@@ -47,7 +47,6 @@ enum NVActivityIndicatorShape {
     func layerWith(size: CGSize, color: UIColor, lineWidth: CGFloat = 2) -> CALayer {
         let layer: CAShapeLayer = CAShapeLayer()
         var path: UIBezierPath = UIBezierPath()
-        let lineWidth: CGFloat = 2
 
         switch self {
         case .circle:
