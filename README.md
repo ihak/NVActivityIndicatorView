@@ -10,7 +10,7 @@
 
 `NVActivityIndicatorView` is a collection of awesome loading animations.
 
-![Demo](https://raw.githubusercontent.com/ninjaprox/NVActivityIndicatorView/master/Demo.gif)
+![Demo](https://github.com/ihak/NVActivityIndicatorView/blob/master/Demo.gif)
 
 `NVActivityIndicatorView` is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
 
@@ -28,6 +28,7 @@
 | 21. ballScaleRipple    | 22. ballScaleRippleMultiple | 23. ballSpinFadeLoader | 24. lineSpinFadeLoader     |
 | 25. triangleSkewSpin   | 26. pacman                  | 27. ballGridBeat       | 28. semiCircleSpin         |
 | 29. ballRotateChase    | 30. orbit                   | 31. audioEqualizer     | 32. circleStrokeSpin       |
+| 33. oppositeCircles    |
 
 ## Installation
 
