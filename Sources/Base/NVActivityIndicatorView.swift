@@ -493,11 +493,11 @@ public final class NVActivityIndicatorView: UIView {
 
      - returns: The activity indicator view.
      */
-    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, secondaryColor: UIColor? = nil, padding: CGFloat? = nil) {
+    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, secondaryColor: UIColor? = nil, padding: CGFloat? = nil, lineWidth: CGFloat? = 2) {
         self.type = type ?? NVActivityIndicatorView.DEFAULT_TYPE
         self.color = color ?? NVActivityIndicatorView.DEFAULT_COLOR
-        self.secondaryColor = color ?? NVActivityIndicatorView.DEFAULT_SECONDARY_COLOR
-        self.lineWidth = NVActivityIndicatorView.DEFAULT_LINE_WIDTH
+        self.secondaryColor = secondaryColor ?? NVActivityIndicatorView.DEFAULT_SECONDARY_COLOR
+        self.lineWidth = lineWidth ?? NVActivityIndicatorView.DEFAULT_LINE_WIDTH
         self.padding = padding ?? NVActivityIndicatorView.DEFAULT_PADDING
         super.init(frame: frame)
         isHidden = true
